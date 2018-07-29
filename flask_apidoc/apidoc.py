@@ -69,6 +69,8 @@ class ApiDoc(object):
             path = 'index.html'
 
         file_name = join(self.folder_path, path)
+        # If '\\' in file_name, flask will return FileNotFound.
+        file_name = file_name.replace('\\','/')
 
         # the api_project.js has the absolute url
         # hard coded so we replace them by the current url.
